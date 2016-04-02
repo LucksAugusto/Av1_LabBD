@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
@@ -21,9 +20,9 @@ public class Tela extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel screenPanel;
-	private JComboBox CbBxEscola;
-	private JComboBox CbBxJurado;
-	private JComboBox CbBxQuesito;
+	private JComboBox<?> CbBxEscola;
+	private JComboBox<?> CbBxJurado;
+	private JComboBox<?> CbBxQuesito;
 	private JTextField txtNota;
 	private JButton btnInserir;
 	private JButton btnQuesito;
@@ -77,17 +76,17 @@ public class Tela extends JFrame {
 		
 		lblEscola = new JLabel("Escola: ");
 		lblEscola.setBounds(50, 20, 100, 25);
-		CbBxEscola = new JComboBox(escolaList);
+		CbBxEscola = new JComboBox<String>(escolaList);
 		CbBxEscola.setBounds(100, 20, 450, 25);
 		
 		lblJurado = new JLabel("Jurado: ");
 		lblJurado.setBounds(50, 60, 100, 25);
-		CbBxJurado = new JComboBox(juradoList);
+		CbBxJurado = new JComboBox<String>(juradoList);
 		CbBxJurado.setBounds(100, 60, 450, 25);
 		
 		lblQuesito = new JLabel("Quesito: ");
 		lblQuesito.setBounds(50, 100, 100, 25);
-		CbBxQuesito = new JComboBox(quesitoList);
+		CbBxQuesito = new JComboBox<String>(quesitoList);
 		CbBxQuesito.setBounds(100, 100, 350, 25);
 		
 		lblNota = new JLabel("Nota: ");
