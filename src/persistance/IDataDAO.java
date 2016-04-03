@@ -1,5 +1,5 @@
 package persistance;
 
-public class GenericDAO {
+public interface IDataDAO {
 
 }
