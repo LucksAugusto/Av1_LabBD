@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
+
 import model.Nota;
 
 
@@ -13,7 +17,6 @@ public class DataDAO implements IDataDAO {
 	public static ArrayList<String> escolaList = new ArrayList<String>();
 	public static ArrayList<String> juradoList = new ArrayList<String>();
 	public static ArrayList<String> quesitoList = new ArrayList<String>();
-	
 	
 	@Override
 	public ArrayList<String> populaEscola() throws Exception {
@@ -80,4 +83,27 @@ public class DataDAO implements IDataDAO {
 		ps.close();
 	}
 
+	@Override
+	public void carregaTotal(JTable tableTotal) throws Exception {
+		String SQL = "SELECT nome, totalPontos FROM Escola ORDER BY totalPontos";
+		Connection con = DBConnection.getInstance().getConnection();
+		PreparedStatement stmt = con.prepareStatement(SQL);
+		ResultSet rs = stmt.executeQuery();
+		while(tableTotal.getRowCount() > 0) 
+        {
+            ((DefaultTableModel) tableTotal.getModel()).removeRow(0);
+        }
+        int columns = rs.getMetaData().getColumnCount();
+        while(rs.next())
+        {  
+            Object[] row = new Object[columns];
+            for (int i = 1; i <= columns; i++)
+            {  
+                row[i - 1] = rs.getObject(i);
+            }
+            ((DefaultTableModel) tableTotal.getModel()).insertRow(rs.getRow()-1,row);
+        }
+		stmt.close();
+		rs.close();
+	}
 }

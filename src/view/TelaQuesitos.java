@@ -8,12 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class TelaQuesitos extends JFrame {
-
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		for (int i = 0; i < 10; i++) {
 			int value = ((int)(Math.random()*5)+5);
