@@ -11,7 +11,7 @@ public class DBConnection implements IDBConnection{
 	private DBConnection() throws SQLException, ClassNotFoundException {
 		try { 
 			Class.forName("net.sourceforge.jtds.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:jtds:sqlserver://127.0.0.1:1433;DatabaseName=master;namedPipe=true","sa","lucks123");
+			con = DriverManager.getConnection("jdbc:jtds:sqlserver://127.0.0.1:1433;DatabaseName=Carnaval;namedPipe=true","sa","lucks123");
 			System.out.println("Conexao ok");
 			} catch (ClassNotFoundException e) {
 			e.printStackTrace();
