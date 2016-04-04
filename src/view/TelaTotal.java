@@ -28,19 +28,6 @@ public class TelaTotal extends JFrame implements ActionListener{
 	private JButton btnFechar;
 	private JLabel lblTabela;
 
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaTotal frame = new TelaTotal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
 	/**
 	 * Create the frame.
 	 * @throws Exception 
@@ -83,7 +70,7 @@ public class TelaTotal extends JFrame implements ActionListener{
 		TotalModel modelo = new TotalModel();
 		Color myColor = Color.decode("#EEEEEE");
 		tblTotal.setBackground(myColor);
-		
+		tblTotal.getTableHeader().setReorderingAllowed(false);
 		tblTotal.setModel(modelo);
 		
 		DataDAO dDAO = new DataDAO();
@@ -92,8 +79,7 @@ public class TelaTotal extends JFrame implements ActionListener{
 		btnFechar.addActionListener(this);
 		
 		totalPanel.add(lblTabela,BorderLayout.PAGE_START);
-		totalPanel.add(btnFechar,BorderLayout.SOUTH);
-		
+		totalPanel.add(btnFechar,BorderLayout.SOUTH);	
 	}
 
 	@Override

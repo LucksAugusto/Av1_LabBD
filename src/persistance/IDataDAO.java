@@ -14,5 +14,6 @@ public interface IDataDAO {
 	public void insereNota(Nota nota) throws Exception;
 	public void atualizaTotal(String escola) throws Exception;
 	public void carregaTotal(JTable tableTotal) throws Exception;
+	public void carregaQuesito(JTable tableNotas, String quesito) throws Exception;
 	
 }

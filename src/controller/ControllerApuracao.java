@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import model.Nota;
 import persistance.DataDAO;
 import view.Tela;
+import view.TelaQuesitos;
 import view.TelaTotal;
 
 public class ControllerApuracao implements ActionListener {
@@ -91,8 +92,18 @@ public class ControllerApuracao implements ActionListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-		}
+			} else if ("Ver Quesitos".equals(cmd)) {
+				TelaQuesitos totalQuesitos;
+				try {
+					totalQuesitos = new TelaQuesitos(CbBxQuesito.getSelectedItem().toString());
+					totalQuesitos.setVisible(true);
+					totalQuesitos.setAlwaysOnTop(true);
+					totalQuesitos.setLocationRelativeTo(null);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 	}
 
 }

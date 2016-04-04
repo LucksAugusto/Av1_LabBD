@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 import model.Nota;
@@ -102,6 +101,36 @@ public class DataDAO implements IDataDAO {
                 row[i - 1] = rs.getObject(i);
             }
             ((DefaultTableModel) tableTotal.getModel()).insertRow(rs.getRow()-1,row);
+        }
+		stmt.close();
+		rs.close();
+	}
+
+	@Override
+	public void carregaQuesito(JTable tableNotas, String quesito) throws Exception {
+		String SQL = "SELECT e.nome, nota1, nota2, nota3, nota4, nota5, menor, maior, nota_total FROM tabela t " +
+				"INNER join escola e " +
+				"ON e.id = t.id_escola " +
+				"INNER join quesito q " +
+				"ON q.id = t.id_quesito " +
+				"WHERE q.nome = ?";
+		Connection con = DBConnection.getInstance().getConnection();
+		PreparedStatement stmt = con.prepareStatement(SQL);
+		stmt.setString(1, quesito);
+		ResultSet rs = stmt.executeQuery();
+		while(tableNotas.getRowCount() > 0) 
+        {
+            ((DefaultTableModel) tableNotas.getModel()).removeRow(0);
+        }
+        int columns = rs.getMetaData().getColumnCount();
+        while(rs.next())
+        {  
+            Object[] row = new Object[columns];
+            for (int i = 1; i <= columns; i++)
+            {  
+                row[i - 1] = rs.getObject(i);
+            }
+            ((DefaultTableModel) tableNotas.getModel()).insertRow(rs.getRow()-1,row);
         }
 		stmt.close();
 		rs.close();

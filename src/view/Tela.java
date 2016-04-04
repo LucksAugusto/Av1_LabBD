@@ -125,6 +125,7 @@ public class Tela extends JFrame {
 		ControllerApuracao controllerAp = new ControllerApuracao(CbBxEscola, CbBxJurado, CbBxQuesito, txtNota);
 		btnInserir.addActionListener(controllerAp);
 		btnTotal.addActionListener(controllerAp);
+		btnQuesito.addActionListener(controllerAp);
 		// btnInserir.addActionListener(this);
 	}
 

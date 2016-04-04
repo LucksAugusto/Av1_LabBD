@@ -6,7 +6,6 @@ public class TotalModel extends DefaultTableModel {
 	private static final long serialVersionUID = 1L;
 
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
