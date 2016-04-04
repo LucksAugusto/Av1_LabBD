@@ -96,8 +96,9 @@ public class Tela extends JFrame {
 		lblNota.setBounds(50, 250, 100, 25);
 		MaskFormatter notaFormat;
 		try {
-			notaFormat = new MaskFormatter("##.#");
+			notaFormat = new MaskFormatter("##'.#");
 			txtNota = new JFormattedTextField(notaFormat);
+			txtNota.requestFocus();
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
